@@ -1,0 +1,14 @@
+plugin.tx_evesso {
+    view {
+        # cat=plugin.tx_evesso/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:evesso/Resources/Private/Templates/
+        # cat=plugin.tx_evesso/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:evesso/Resources/Private/Partials/
+        # cat=plugin.tx_evesso/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:evesso/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_evesso//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

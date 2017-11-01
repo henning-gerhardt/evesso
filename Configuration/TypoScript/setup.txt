@@ -1,0 +1,20 @@
+plugin.tx_evesso {
+    view {
+        templateRootPath = {$plugin.tx_evesso.view.templateRootPath}
+        partialRootPath = {$plugin.tx_evesso.view.partialRootPath}
+        layoutRootPath = {$plugin.tx_evesso.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_evesso.persistence.storagePid}
+    }
+    features {
+        # uncomment the following line to enable the new Property Mapper.
+        rewrittenPropertyMapper = 1
+        # see https://docs.typo3.org/typo3cms/extensions/core/8.7/Changelog/8.5/Breaking-78002-EnforceCHashArgumentForExtbaseActions.html
+        # required for action "callback" of SsoLogin controller
+        # to disable cHash check :/
+        requireCHashArgumentForActionArguments = 0
+    }
+}
+
+module.tx_evesso.persistence < plugin.tx_evesso.persistence

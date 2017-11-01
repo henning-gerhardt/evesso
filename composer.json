@@ -1,0 +1,56 @@
+{
+    "name": "gerh/evesso",
+    "type": "typo3-cms-extension",
+    "description": "EVE SSO: single sign on for EVE Online",
+    "homepage": "https://github.com/henning-gerhardt/evesso",
+    "license": ["GPL-3.0+"],
+    "keywords": ["TYPO3 CMS", "TYPO3 Extension", "EVE Online", "SSO", "Single Sign On"],
+    "support": {
+        "issues": "https://github.com/henning-gerhardt/evesso/issues"
+    },
+    "authors": [
+        {
+            "name": "Henning Gerhardt",
+            "email": "henning.gerhardt@web.de"
+        }
+    ],
+    "require": {
+        "typo3/cms": "^8.7"
+    },
+    "require-dev": {
+        "typo3/testing-framework": "^1.1",
+        "phpunit/phpunit": "^6.4",
+        "codacy/coverage": "dev-master"
+    },
+    "replace": {
+        "evesso": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gerh\\Evesso\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Gerh\\Evesso\\Tests\\": "Tests/",
+            "TYPO3\\CMS\\Core\\Tests\\": ".build/vendor/typo3/cms/typo3/sysext/core/Tests/"
+        }
+    },
+    "config": {
+        "vendor-dir": ".build/vendor",
+        "bin-dir": ".build/bin"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "[ -d .build/web/typo3conf/ext ] || mkdir -p .build/web/typo3conf/ext",
+            "[ -L .build/web/typo3conf/ext/evesso ] || ln -snvf ../../../../. .build/web/typo3conf/ext/evesso"
+        ],
+        "test": "export TYPO3_PATH_WEB=`pwd`/.build/web; export typo3DatabaseName='evesso'; export typo3DatabaseHost='127.0.0.1'; export typo3DatabaseUsername='evesso'; export typo3DatabasePassword=''; .build/bin/phpunit --colors -c .build/vendor/typo3/testing-framework/Resources/Core/Build/UnitTests.xml Tests/Unit/ --whitelist Classes/ --coverage-clover .build/clover.xml"
+    },
+    "extra": {
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".build/web"
+        }
+    }
+}

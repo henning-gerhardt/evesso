@@ -1,0 +1,5 @@
+config.tx_extbase {
+    persistence {
+        storagePid = {$plugin.tx_evesso.persistence.storagePid}
+    }
+}
