@@ -19,3 +19,7 @@
 if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
+
+// flex form for sso login
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['evesso_pi1'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('evesso_pi1', 'FILE:EXT:evesso/Configuration/FlexForms/SsoLogin.xml');

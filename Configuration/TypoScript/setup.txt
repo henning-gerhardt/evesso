@@ -18,3 +18,4 @@ plugin.tx_evesso {
 }
 
 module.tx_evesso.persistence < plugin.tx_evesso.persistence
+module.tx_evesso.features < plugin.tx_evesso.features

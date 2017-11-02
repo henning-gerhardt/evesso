@@ -1,5 +1,1 @@
-config.tx_extbase {
-    persistence {
-        storagePid = {$plugin.tx_evesso.persistence.storagePid}
-    }
-}
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:evesso/Configuration/TypoScript/setup.txt">
