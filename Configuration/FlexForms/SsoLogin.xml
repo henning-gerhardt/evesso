@@ -10,15 +10,27 @@
                 </TCEforms>
                 <type>array</type>
                 <el>
-                    <settings.authorizeUri>
+                    <settings.loginSystem>
                         <TCEforms>
-                            <label>EVE SSO authorize URI</label>
+                            <label>EVE SSO Login System</label>
                             <config>
-                                <type>input</type>
-                                <eval>trim</eval>
+                                <type>select</type>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">TQ</numIndex>
+                                        <numIndex index="1">https://login.eveonline.com</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">SISI</numIndex>
+                                        <numIndex index="1">https://sisilogin.testeveonline.com</numIndex>
+                                    </numIndex>
+                                </items>
+                                <minitems>1</minitems>
+                                <maxitems>1</maxitems>
+                                <size>1</size>
                             </config>
                         </TCEforms>
-                    </settings.authorizeUri>
+                    </settings.loginSystem>
                     <settings.clientId>
                         <TCEforms>
                             <label>Client ID</label>

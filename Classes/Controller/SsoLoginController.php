@@ -25,6 +25,21 @@ class SsoLoginController extends ActionController
 {
 
     /**
+     * @var string
+     */
+    protected $authorizePath = '/oauth/authorize';
+
+    /**
+     * @var string
+     */
+    protected $tokenPath = '/oauth/token';
+
+    /**
+     * @var string
+     */
+    protected $verifyPath = '/oauth/verify';
+
+    /**
      * action index
      *
      * @return void
@@ -32,11 +47,11 @@ class SsoLoginController extends ActionController
     public function indexAction()
     {
 
-        $authorizeUri = $this->settings['authorizeUri'];
+        $loginSystem = $this->settings['loginSystem'];
         $clientId = $this->settings['clientId'];
 
         $showSubmitButton = \TRUE;
-        if (empty($authorizeUri) || empty($clientId)) {
+        if (empty($loginSystem) || empty($clientId)) {
             $message = 'Plugin not configured!';
             $this->addFlashMessage($message, '', AbstractMessage::ERROR);
             $showSubmitButton = \FALSE;
@@ -52,7 +67,9 @@ class SsoLoginController extends ActionController
             ->setUseCacheHash($noCacheHash)
             ->uriFor('callback');
 
-        $this->view->assign('authUri', $authorizeUri);
+        $authUri = $loginSystem . $this->authorizePath;
+
+        $this->view->assign('authUri', $authUri);
         $this->view->assign('redirectUri', $redirectUri);
         $this->view->assign('clientId', $clientId);
         $this->view->assign('noCache', $noCache);
@@ -82,8 +99,17 @@ class SsoLoginController extends ActionController
             $eveStateId = $GLOBALS["TSFE"]->fe_user->getKey('ses', 'EveStateId');
         }
 
+        $loginSystem = $this->settings['loginSystem'];
+        $clientId = $this->settings['clientId'];
+        $secretKey = $this->settings['secretKey'];
+
         $backStateId = GeneralUtility::_GET('state');
         $codeValue = GeneralUtility::_GET('code');
+
+        if (empty($loginSystem) || empty($clientId) || empty($secretKey)) {
+            $this->addFlashMessage('Plugin not configured', '', AbstractMessage::ERROR);
+            return;
+        }
 
         if ($backStateId !== $eveStateId) {
             $this->addFlashMessage('Wrong state is returned back!', '', AbstractMessage::ERROR);
@@ -92,6 +118,7 @@ class SsoLoginController extends ActionController
 
         if (empty($codeValue)) {
             $this->addFlashMessage('No authorization code returned!', '', AbstractMessage::ERROR);
+            return;
         }
 
         $this->addFlashMessage('Everything looks nice - but nothing has done yet with the data!');
