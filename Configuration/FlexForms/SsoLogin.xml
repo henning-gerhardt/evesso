@@ -36,7 +36,7 @@
                             <label>Client ID</label>
                             <config>
                                 <type>input</type>
-                                <eval>trim</eval>
+                                <eval>trim,required</eval>
                             </config>
                         </TCEforms>
                     </settings.clientId>
@@ -45,13 +45,13 @@
                             <label>Secret Key</label>
                             <config>
                                 <type>input</type>
-                                <eval>trim</eval>
+                                <eval>trim,required</eval>
                             </config>
                         </TCEforms>
                     </settings.secretKey>
                     <settings.showCallbackLink>
                         <TCEforms>
-                            <label>Show callback link</label>
+                            <label>Development: show callback link</label>
                             <config>
                                 <type>check</type>
                                 <default>0</default>
