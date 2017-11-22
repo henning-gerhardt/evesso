@@ -49,6 +49,16 @@
                             </config>
                         </TCEforms>
                     </settings.secretKey>
+                    <settings.scope>
+                        <TCEforms>
+                            <label>Access scope</label>
+                            <config>
+                                <type>input</type>
+                                <default>publicData characterAccountRead esi-characters.read_corporation_roles.v1</default>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.scope>
                     <settings.showCallbackLink>
                         <TCEforms>
                             <label>Development: show callback link</label>

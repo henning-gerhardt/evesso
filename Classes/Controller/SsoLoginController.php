@@ -49,6 +49,7 @@ class SsoLoginController extends ActionController
 
         $loginSystem = $this->settings['loginSystem'];
         $clientId = $this->settings['clientId'];
+        $scope = $this->settings['scope'];
 
         $showSubmitButton = \TRUE;
         if (empty($loginSystem) || empty($clientId)) {
@@ -75,6 +76,7 @@ class SsoLoginController extends ActionController
         $this->view->assign('noCache', $noCache);
         $this->view->assign('noCacheHash', $noCacheHash);
         $stateId = \uniqid();
+        $this->view->assign('scope', $scope);
         $this->view->assign('state', $stateId);
         $this->view->assign('showSubmitButton', $showSubmitButton);
         $this->view->assign('showCallbackLink', $this->settings['showCallbackLink']);

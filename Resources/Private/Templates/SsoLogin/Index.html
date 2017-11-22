@@ -11,7 +11,15 @@
             <input type="hidden" name="redirect_uri" value="{redirectUri}" />
             <input type="hidden" name="client_id" value="{clientId}" />
             <input type="hidden" name="state" value="{state}" />
-            <f:form.submit value="Submit" class="btn btn-default"/>
+            <f:if condition="{scope} != ''">
+                <f:then>
+                    <input type="hidden" name="scope" value="{scope}" />
+                    <f:form.submit value="Authentication & scope access" class="btn btn-default"/>
+                </f:then>
+                <f:else>
+                    <f:form.submit value="Only authentication" class="btn btn-default"/>
+                </f:else>
+            </f:if>
         </form>
     </f:if>
 
