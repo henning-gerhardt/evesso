@@ -32,7 +32,7 @@ class ResultTest extends UnitTestCase
 
         $this->assertInstanceOf(Result::class, $result);
         $this->assertEmpty($result->getMessage());
-        $this->assertTrue($result->getResult());
+        $this->assertTrue($result->isResult());
     }
 
     /**
@@ -55,7 +55,7 @@ class ResultTest extends UnitTestCase
         $result = new Result($expectedMessage, $expectedResult);
 
         $this->assertEquals($expectedMessage, $result->getMessage());
-        $this->assertEquals($expectedResult, $result->getResult());
+        $this->assertEquals($expectedResult, $result->isResult());
     }
 
     /**
@@ -68,7 +68,7 @@ class ResultTest extends UnitTestCase
         $result = new Result($expectedMessage, $expectedResult);
 
         $this->assertEquals($expectedMessage, $result->getMessage());
-        $this->assertEquals($expectedResult, $result->getResult());
+        $this->assertEquals($expectedResult, $result->isResult());
     }
 
     /**

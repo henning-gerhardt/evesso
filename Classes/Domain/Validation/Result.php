@@ -65,7 +65,7 @@ class Result
      *
      * @return bool
      */
-    public function getResult(): bool
+    public function isResult(): bool
     {
         return $this->result;
     }
